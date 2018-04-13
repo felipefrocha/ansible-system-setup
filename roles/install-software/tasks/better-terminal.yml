@@ -1,0 +1,26 @@
+- name: Add Google Chrome APT key
+  apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub
+  become: yes
+
+- name: add Google Chrome APT repository
+  apt_repository: repo='deb http://dl.google.com/linux/chrome/deb/ stable main'
+  become: yes
+
+- name: Install latest versions of apt packages
+  apt:
+    name: "{{ item }}"
+    state: latest
+    install_recommends: no
+    update_cache: yes
+    cache_valid_time: 3600
+  with_items:
+    - zsh
+  become: yes
+
+- name: install Oh My Zsh
+  shell: >
+    curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | 
+    sh; zsh
+  register: oh_my_zsh
+  failed_when: oh_my_zsh.rc > 0
+  changed_when: False
