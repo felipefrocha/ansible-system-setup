@@ -1,5 +1,5 @@
 - name: add Pulse audio equalizer repository
-  apt_repository: repo='deb http://ppa.launchpad.net/nilarimogard/webupd8/ubuntu trusty main'
+  apt_repository: repo='deb http://ppa.launchpad.net/nilarimogard/webupd8/ubuntu xenial main'
   become: yes
 
 - name: install pulse audio equalizer

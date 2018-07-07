@@ -6,7 +6,7 @@
 
 - name: add VirtualBox PPA
   apt_repository:
-    repo='deb http://download.virtualbox.org/virtualbox/debian trusty contrib non-free'
+    repo='deb http://download.virtualbox.org/virtualbox/debian xenial contrib non-free'
   become: yes
 
 - name: install VirtualBox
